@@ -15,7 +15,7 @@ class ZigDev < Formula
     # Check: https://github.com/ziglang/zig/blob/#{version}/CMakeLists.txt
     # for supported LLVM version.
     # When switching to `llvm`, remove the `on_linux` block below.
-    depends_on "llvm@16" => :build
+    depends_on "llvm@17" => :build
     depends_on macos: :big_sur # https://github.com/ziglang/zig/issues/13313
     depends_on "z3"
     depends_on "zstd"
@@ -32,9 +32,9 @@ class ZigDev < Formula
   
     def install
       # Make sure `llvm@16` is used.
-      ENV.prepend_path "PATH", Formula["llvm@16"].opt_bin
-      ENV["CC"] = Formula["llvm@16"].opt_bin/"clang"
-      ENV["CXX"] = Formula["llvm@16"].opt_bin/"clang++"
+      ENV.prepend_path "PATH", Formula["llvm@17"].opt_bin
+      ENV["CC"] = Formula["llvm@17"].opt_bin/"clang"
+      ENV["CXX"] = Formula["llvm@17"].opt_bin/"clang++"
   
       # Work around duplicate symbols with Xcode 15 linker.
       # Remove on next release.
